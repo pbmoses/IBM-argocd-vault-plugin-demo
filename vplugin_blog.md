@@ -1,6 +1,6 @@
 Author Phil Moses pmoses@redhat.com
 
-To allow for more secure GitOps practices, sensitive data should should never be stored in Git. This presents a bit of a conundrum for GitOps, we need the secrets in Git... but we do not want to store the sensitive date. We can, however, store the secrets in a tool such as Hashicorp Vault, then retrieve and inject this data into OpenShift! A detailed how to follows, utilizing the IBM/ArgoCD-Vault plugin with ArgoCD. Keep your hands and arms inside the vehicle, buckle up and hold on, this is going to be a fun ride... or demo!
+To allow for more secure GitOps practices, sensitive data should should never be stored in Git. This presents a bit of a conundrum for GitOps, we need the secrets in Git... but we do not want to store the sensitive date. We can store the secrets in a tool such as Hashicorp Vault, then retrieve and inject this data into OpenShift! A detailed how to follows, utilizing the IBM/ArgoCD-Vault plugin with ArgoCD. Keep your hands and arms inside the vehicle, buckle up and hold on, this is going to be a fun ride... or demo!
 
 ## Required
 **A working OpenShift Cluster or equivalent**
