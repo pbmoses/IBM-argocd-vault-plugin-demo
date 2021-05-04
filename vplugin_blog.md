@@ -118,7 +118,7 @@ metadata:
 ---
 oc apply -f vplugin.yml
 ```
-At this point we should have Vault installed and configure and be ready to move to ArgoCD and the plugin!
+At this point we should have Vault installed and configured and be ready to move to ArgoCD and the plugin!
 
 ## ArgoCD Installation and Configuration
 The Red Hat GitOps operator provides ArgoCD, We can install this from the Operator Hub! 
