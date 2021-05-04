@@ -16,7 +16,7 @@ https://github.com/redhat-developer/gitops-operator
 
 **An implementation of Hashicorp Vault**
 
-A full enterprise demo is out of the scope of this demo, I will utilize an dev/ephemeral implementation of Vault and configure this through the pods themselves. This is not intended for production, rather it is a quick and dirty way to have a configured Vault for a proof of concept.  https://learn.hashicorp.com/tutorials/vault/kubernetes-openshift?in=vault/kubernetes
+A full enterprise version of Vault is out of the scope of this demo, I will utilize an dev/ephemeral implementation of Vault and configure this through the pods themselves. This is not intended for production, rather it is a quick and dirty way to have a configured Vault for a proof of concept.  https://learn.hashicorp.com/tutorials/vault/kubernetes-openshift?in=vault/kubernetes
 
 **The IBM ArgoCD-Vault plugin** 
 
@@ -36,10 +36,10 @@ We will install Vault via a Helm chart. We will be utilizing Kubernetes authenti
 
 ```
 [pmo@pmo-rhel ~]$ oc new-project vault
-[pmo@pmo-rhel ~]$helm repo add hashicorp https://helm.releases.hashicorp.com
+[pmo@pmo-rhel ~]$ helm repo add hashicorp https://helm.releases.hashicorp.com
 [pmo@pmo-rhel ~]$ helm install vault hashicorp/vault --set \ "global.openshift=true" --set "server.dev.enabled=true"
 ```
-After allowing the install complete we should have a working dev setup of Vault:
+After allowing the install to complete we should have a working dev setup of Vault:
 
 ```
 [pmo@pmo-rhel ~]$ oc get pods
@@ -98,6 +98,8 @@ path "secret/data/vplugin/supersecret" {
 EOF
 ```
 **Create an authentication role**
+
+Note that you will need to create the SA in the namespace that you will install your ArgoCD instance. 
 ```
 #vault write auth/kubernetes/role/vplugin \
     bound_service_account_names=vplugin \
@@ -181,7 +183,7 @@ Version: v1.0
 ```
 A reference of a working ArgoCD manifest with the previous customizations can be found here:
 
-[Argocd manifest](https://github.com/pbmoses/public/argocd_manifest_custom_repo.yml)
+[Argocd manifest](https://github.com/pbmoses/public/blob/main/argocd_manifest_custom_repo.yml)
 
 With the ArgoCD instance installed, we can check that the plugin is indeed present:
 ![Plugin Present!](https://github.com/pbmoses/IBM-argocd-vault-plugin-demo/blob/main/images/installed_plugin.png)
@@ -207,7 +209,7 @@ stringData:
 ```
 **Build an Argo App**
 
-With Vault installed and ArgoCD installed and a secret manifest in Git, we next build an application in ArgoCD and provide our plugin values via environment variables: In the end, this will look like the example below,  which points to our Git Repo which houses a sample secret. It is important to not that the environment variables are prefixed with AVP, this is a requirement of the plugin when using environment variables.
+With Vault installed and ArgoCD installed and a secret manifest in Git, we next build an application in ArgoCD and provide our plugin values via environment variables: In the end, this will look like the example below,  which points to our Git Repo which houses a sample secret. It is important to note that the environment variables are prefixed with AVP, this is a requirement of the plugin when using environment variables.
 
 ```
 project: default
