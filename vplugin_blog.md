@@ -16,7 +16,7 @@ https://github.com/redhat-developer/gitops-operator
 
 **An implementation of Hashicorp Vault**
 
-A full enterprise version of Vault is out of the scope of this demo, I will utilize an dev/ephemeral implementation of Vault and configure this through the pods themselves. This is not intended for production, rather it is a quick and dirty way to have a configured Vault for a proof of concept.  https://learn.hashicorp.com/tutorials/vault/kubernetes-openshift?in=vault/kubernetes
+A full enterprise version of Vault is out of the scope of this demo, I will utilize an dev/ephemeral implementation of Vault and configured this through the pods themselves. This is not intended for production, rather it is a quick and dirty way to have a configured Vault for a proof of concept.  https://learn.hashicorp.com/tutorials/vault/kubernetes-openshift?in=vault/kubernetes
 
 **The IBM ArgoCD-Vault plugin** 
 
