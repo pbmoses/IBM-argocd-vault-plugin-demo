@@ -91,7 +91,7 @@ username    pmo
 ```
 **Create a policy for the secret**
 ```
-#vault policy write webapp - <<EOF
+#vault policy write vplugin - <<EOF
 path "secret/data/vplugin/supersecret" {
   capabilities = ["read"]
 }
