@@ -164,7 +164,7 @@ After the image is built and pushed to the registry,we will need to build a new 
 ...
 repo:
     mountsatoken: true
-    serviceaccount: webapp
+    serviceaccount: vplugin
 ```
 *The image will be that which was pushed in the previous steps
 ```
