@@ -33,6 +33,7 @@ https://podman.io/getting-started/installation
 ## Hashicorp Vault Installation and configuration
 
 We will install Vault via a Helm chart. We will be utilizing Kubernetes authentication over the other methods which are available.
+*** there has been concern about the Helm installation and namespace selectors. Please be sure you understand the values being used in the chart. 
 
 ```
 [pmo@pmo-rhel ~]$ oc new-project vault
